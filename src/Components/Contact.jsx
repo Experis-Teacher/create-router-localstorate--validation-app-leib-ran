@@ -7,12 +7,13 @@ export default class Contact extends Component {
   }
 
   savePhone(e) {
-    localStorage["phone"] = e.target.value;
+    if (e.target.value.match(/[0-9]{3}-[0-9]{9}/gim))
+      localStorage["phone"] = e.target.value;
   }
 
-  navigate  = () => {
+  navigate = () => {
     this.props.history.push("/finish");
-  }
+  };
 
   render() {
     return (

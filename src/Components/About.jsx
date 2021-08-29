@@ -7,12 +7,14 @@ export default class About extends Component {
   }
 
   saveName(e) {
-    localStorage["name"] = e.target.value;
+    if (e.target.value.match(/[a-z]{3,5}/gim)) {
+      localStorage.setItem("name", e.target.value);
+    }
   }
 
   navigate = () => {
     this.props.history.push("/contact");
-  }
+  };
 
   render() {
     return (
