@@ -7,11 +7,18 @@ export default class About extends Component {
       show: "none",
     };
     this.alert = this.alert.bind(this);
+
+    this.input = React.createRef()
+    this.button = React.createRef()
   }
 
-  saveName(e) {
-    if (e.target.value.match(/[a-z]{3,5}/gim)) {
+  saveName = (e) => {
+    // console.log(e.target.value.match(/[a-z]{2,5}/gi));
+    const myInput = this.input.current
+    // const button = this.button.current
+    if (myInput.value.match(/[a-z]{2,5}/gi)) {
       localStorage.setItem("name", e.target.value);
+      // button.click()
       return true;
     }
     return false;
@@ -28,6 +35,7 @@ export default class About extends Component {
       <div>
         <h1> About</h1>
         <input
+          ref={this.input}
           type="text"
           placeholder="Enter your name"
           className="name"
@@ -37,8 +45,9 @@ export default class About extends Component {
           onBlur={this.saveName}
         />
         <button
-          onClick={() => {
-            if (this.saveName()) {
+          ref={this.button}
+          onClick={(e) => {
+            if (this.saveName(e)) {
               this.navigate();
             } else {
               this.setState({ show: "" });
