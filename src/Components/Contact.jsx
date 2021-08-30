@@ -14,7 +14,7 @@ export default class Contact extends Component {
       localStorage["phone"] = e.target.value;
       return true;
     }
-    ret;
+    return false;
   }
 
   navigate = () => {
