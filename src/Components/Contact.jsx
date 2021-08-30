@@ -10,8 +10,11 @@ export default class Contact extends Component {
   }
 
   savePhone(e) {
-    if (e.target.value.match(/[0-9]{3}-[0-9]{9}/gim))
+    if (e.target.value.match(/[0-9]{3}-[0-9]{9}/gim)) {
       localStorage["phone"] = e.target.value;
+      return true;
+    }
+    ret;
   }
 
   navigate = () => {
